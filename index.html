@@ -1,8 +1,8 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Valentine 💖</title>
 
 <style>
@@ -144,7 +144,7 @@ function nextStep() {
             <button class="yes" onclick="nextStep()">Next🥰</button>
         `;
         step++;
-        <p class="countdown">🔊 Best experienced with sound on</p>
+        document.getElementById("countdown").innerText = "🔊 Best experienced with sound on";
 
 
     } else if (step === 2) {
@@ -182,7 +182,7 @@ function moveNoButton() {
 
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
-    });
+    }
 }
 
 function growYesButton() {
@@ -206,7 +206,7 @@ function showLove() {
             Loving you feels natural, effortless, and right.<br>
             Thank you for your patience, your support, and your love.
             I don’t just want today with you, I want every tomorrow.
-            The Angles up in the clouds are jealous knowing what found.
+            The Angels up in the clouds are jealous knowing what I found.
             I take one look at you and you take me out of the ordinary.
             You get things way you dae do to me way ar no fit explain.<br>
             <strong>I love you endlessly 💕</strong>
@@ -248,4 +248,3 @@ updateCountdown();
 </body>
 
 </html>
-
