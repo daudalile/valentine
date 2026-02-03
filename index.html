@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,49 +6,53 @@
 <title>My Valentine 💖</title>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
         font-family: 'Segoe UI', sans-serif;
-        text-align: center;
-        height: 100vh;
+        margin: 0;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         color: #fff;
-        margin: 0;
-        overflow: hidden;
+        overflow-x: hidden;
+        padding: 15px;
     }
 
     .card {
         background: rgba(255, 255, 255, 0.25);
-        padding: 30px;
-        border-radius: 20px;
-        width: 90%;
-        max-width: 430px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        animation: fadeIn 1s ease;
-        position: relative;
-        z-index: 2;
+        padding: 22px;
+        border-radius: 18px;
+        width: 100%;
+        max-width: 380px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        text-align: center;
+        animation: fadeIn 0.8s ease;
     }
 
     h1 {
-        font-size: 28px;
-        margin-bottom: 15px;
+        font-size: clamp(22px, 5vw, 28px);
+        margin-bottom: 12px;
     }
 
     p {
-        font-size: 18px;
-        line-height: 1.6;
+        font-size: clamp(15px, 4vw, 18px);
+        line-height: 1.5;
+        margin: 8px 0;
     }
 
     button {
-        margin: 10px;
-        padding: 12px 26px;
-        border: none;
+        padding: 12px 22px;
+        font-size: 15px;
         border-radius: 30px;
-        font-size: 16px;
+        border: none;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        margin: 8px;
+        max-width: 90%;
     }
 
     .yes {
@@ -62,45 +67,39 @@
     }
 
     .buttons {
-        margin-top: 20px;
+        margin-top: 15px;
         position: relative;
         height: 70px;
     }
 
     .photo {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         object-fit: cover;
-        border: 4px solid white;
-        margin-bottom: 15px;
+        border: 3px solid white;
+        margin-bottom: 12px;
     }
 
     .countdown {
-        font-size: 16px;
+        font-size: 14px;
+        opacity: 0.85;
         margin-top: 10px;
-        opacity: 0.9;
-    }
-
-    /* Floating hearts */
-    .heart {
-        position: absolute;
-        bottom: -20px;
-        font-size: 20px;
-        animation: floatUp 6s linear infinite;
-        opacity: 0.7;
-    }
-
-    @keyframes floatUp {
-        0% { transform: translateY(0); opacity: 0.7; }
-        100% { transform: translateY(-100vh); opacity: 0; }
     }
 
     @keyframes fadeIn {
         from { opacity: 0; transform: scale(0.95); }
         to { opacity: 1; transform: scale(1); }
     }
+
+    /* Small screens tweak */
+    @media (max-width: 360px) {
+        .buttons {
+            height: 90px;
+        }
+    }
 </style>
+
 </head>
 
 <body>
@@ -126,7 +125,7 @@ function nextStep() {
 
     if (step === 0) {
         card.innerHTML = `
-            <h1>Gifty, be honest 😌</h1>
+            <h1>Bbe Gifty, be honest 😌</h1>
             <p>Do you know how much I love you?</p>
             <button class="yes" onclick="nextStep()">Yes ❤️</button>
             <button class="no" onclick="funny()">No 😏</button>
@@ -145,6 +144,8 @@ function nextStep() {
             <button class="yes" onclick="nextStep()">Next🥰</button>
         `;
         step++;
+        <p class="countdown">🔊 Best experienced with sound on</p>
+
 
     } else if (step === 2) {
         card.innerHTML = `
@@ -167,10 +168,20 @@ function funny() {
 
 function moveNoButton() {
     const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * 220 - 110;
-        const y = Math.random() * 160 - 80;
-        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    const card = document.querySelector(".card");
+
+    noBtn.addEventListener("touchstart", move);
+    noBtn.addEventListener("mouseover", move);
+
+    function move() {
+        const maxX = card.offsetWidth - noBtn.offsetWidth - 20;
+        const maxY = 50;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
     });
 }
 
@@ -237,3 +248,4 @@ updateCountdown();
 </body>
 
 </html>
+
