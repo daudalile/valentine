@@ -92,6 +92,20 @@
         to { opacity: 1; transform: scale(1); }
     }
 
+    .heart {
+        position: absolute;
+        top: 100vh;
+        animation: floatUp 6s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes floatUp {
+        to {
+            top: -50px;
+            opacity: 0;
+        }
+    }
+
     /* Small screens tweak */
     @media (max-width: 360px) {
         .buttons {
