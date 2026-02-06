@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Valentine 💖</title>
+<title>For My Gifty 💖</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: 'Segoe UI', sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         min-height: 100vh;
         display: flex;
@@ -20,145 +18,95 @@
         align-items: center;
         color: #fff;
         overflow-x: hidden;
-        padding: 15px;
+        padding: 20px;
     }
 
     .card {
-        background: rgba(255, 255, 255, 0.25);
-        padding: 22px;
-        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
         width: 100%;
-        max-width: 380px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        max-width: 400px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         text-align: center;
         animation: fadeIn 0.8s ease;
+        border: 1px solid rgba(255,255,255,0.3);
     }
 
-    h1 {
-        font-size: clamp(22px, 5vw, 28px);
-        margin-bottom: 12px;
-    }
+    h1 { font-size: 1.8rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+    p { font-size: 1.1rem; line-height: 1.6; margin: 10px 0; }
 
-    p {
-        font-size: clamp(15px, 4vw, 18px);
-        line-height: 1.5;
-        margin: 8px 0;
+    .btn-container {
+        margin-top: 20px;
+        position: relative;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
     }
 
     button {
-        padding: 12px 22px;
-        font-size: 15px;
+        padding: 12px 25px;
+        font-size: 1rem;
         border-radius: 30px;
         border: none;
         cursor: pointer;
-        margin: 8px;
-        max-width: 90%;
+        transition: transform 0.2s;
+        font-weight: bold;
     }
 
-    .yes {
-        background: #ff4d6d;
-        color: white;
-    }
-
-    .no {
-        background: white;
-        color: #ff4d6d;
-        position: absolute;
-    }
-
-    .buttons {
-        margin-top: 15px;
-        position: relative;
-        height: 70px;
-    }
+    .yes { background: #ff4d6d; color: white; z-index: 10; }
+    .no { background: white; color: #ff4d6d; position: absolute; transition: 0.3s ease; }
 
     .photo {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid white;
-        margin-bottom: 12px;
+        border: 4px solid white;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    .countdown {
-        font-size: 14px;
-        opacity: 0.85;
+    .countdown { font-size: 0.9rem; opacity: 0.9; margin-top: 15px; font-style: italic; }
+
+    .feedback-box {
+        margin-top: 25px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+    }
+
+    textarea {
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
         margin-top: 10px;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .heart {
-        position: absolute;
-        top: 100vh;
-        animation: floatUp 6s linear infinite;
+        position: fixed;
+        bottom: -10%;
+        animation: floatUp 6s linear forwards;
         pointer-events: none;
+        z-index: -1;
     }
 
     @keyframes floatUp {
-        to {
-            top: -50px;
-            opacity: 0;
-        }
+        to { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
     }
-
-    /* Small screens tweak */
-    @media (max-width: 360px) {
-        .buttons {
-            height: 90px;
-        }
-    }
-   .feedback-box {
-  margin-top: 30px;
-  padding: 20px;
-  background: rgba(255, 192, 203, 0.15);
-  border-radius: 16px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-}
-
-.feedback-box h2 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-
-.feedback-box textarea {
-  width: 100%;
-  min-height: 120px;
-  border-radius: 12px;
-  border: none;
-  padding: 12px;
-  font-size: 1rem;
-  resize: none;
-}
-
-.feedback-box button {
-  margin-top: 12px;
-  background: #ff4d6d;
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.feedback-box button: hover {
-  background: #ff1e4d;
-}
-
 </style>
-
 </head>
-
 <body>
 
-<!-- Background music -->
 <audio id="music" loop>
     <source src="valentine.mp3" type="audio/mpeg">
 </audio>
@@ -166,7 +114,7 @@
 <div class="card" id="card">
     <h1>Hey Gifty 💕</h1>
     <p>I have one important question for you...</p>
-    <button class="yes" onclick="nextStep()">Okay 😍</button>
+    <button class="yes" onclick="nextStep()">Open it 😍</button>
     <div class="countdown" id="countdown"></div>
 </div>
 
@@ -176,151 +124,120 @@ let yesSize = 1;
 
 function nextStep() {
     const card = document.getElementById("card");
+    const countdown = document.getElementById("countdown");
 
     if (step === 0) {
         card.innerHTML = `
             <h1>Bbe Gifty, be honest 😌</h1>
-            <p> Do you want to know how much I love you?</p>
-            <button class="yes" onclick="nextStep()">Yes ❤️</button>
-            <button class="no" onclick="funny()">No 😏</button>
+            <p>Do you want to know how much I love you?</p>
+            <div class="btn-container">
+                <button class="yes" onclick="nextStep()">Yes ❤️</button>
+                <button class="no" onclick="funny()">No 😏</button>
+            </div>
         `;
         step++;
-
     } else if (step === 1) {
         card.innerHTML = `
-            <h1>Correct Answer 😍</h1>
+            <h1>The Truth is... 😍</h1>
             <p>
-                more than you can imagine<br>
+                More than you can imagine.<br>
                 More than words can express.<br>
-                With every breath I take. <br>
-                More than the internet and wifi😄
+                With every single breath I take.<br>
+                More than the internet and Wi-Fi! 😄
             </p>
             <button class="yes" onclick="nextStep()">Next🥰</button>
         `;
         step++;
-        document.getElementById("countdown").innerText = "🔊 Best experienced with sound on";
-
-
     } else if (step === 2) {
         card.innerHTML = `
             <h1>One Last Thing 💖</h1>
-            <p>Gifty sweetheart, my all and all, will you be my Valentine?</p>
-            <div class="buttons">
+            <p>Gifty sweetheart, my all in all, will you be my Valentine?</p>
+            <div class="btn-container" id="finalButtons">
                 <button class="yes" id="yesBtn" onclick="showLove()">Yes 💕</button>
                 <button class="no" id="noBtn">No 😏</button>
             </div>
         `;
-        moveNoButton();
-        growYesButton();
+        setupNoButton();
         step++;
     }
 }
 
 function funny() {
-    alert("!Wrong answer Bbe 😤😂 Try again!");
+    alert("Wrong answer Bbe! 😤😂 Try again!");
 }
 
-function moveNoButton() {
+function setupNoButton() {
     const noBtn = document.getElementById("noBtn");
-    const card = document.querySelector(".card");
-
-    noBtn.addEventListener("touchstart", move);
-    noBtn.addEventListener("mouseover", move);
-
-    function move() {
-        const maxX = card.offsetWidth - noBtn.offsetWidth - 20;
-        const maxY = 50;
-
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-    }
-}
-
-function growYesButton() {
     const yesBtn = document.getElementById("yesBtn");
-    yesBtn.addEventListener("mouseover", () => {
-        yesSize += 0.1;
+    
+    const moveMove = () => {
+        const x = Math.random() * 150 - 75;
+        const y = Math.random() * 100 - 50;
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        
+        // Make the yes button grow every time they try to hit 'no'
+        yesSize += 0.15;
         yesBtn.style.transform = `scale(${yesSize})`;
-    });
+    };
+
+    noBtn.addEventListener("mouseover", moveMove);
+    noBtn.addEventListener("touchstart", moveMove);
 }
 
 function showLove() {
-    document.getElementById("music").play();
+    const music = document.getElementById("music");
+    music.play().catch(e => console.log("Audio needs interaction"));
+    
     const card = document.getElementById("card");
+    card.style.maxWidth = "500px";
 
     card.innerHTML = `
         <img src="bby.jpeg" class="photo" alt="Gifty">
-        <h1>Happy Valentine’s, My Love 💖</h1>
+        <h1>Forever Yours 💖</h1>
         <p>
-            Gifty, choosing you is the best decision I have ever made.
-            You bring peace to my heart, joy to my days, and meaning to my life.
-            Loving you feels natural, effortless, and right.<br>
-            Thank you for your patience, your support, and your love.
+            Gifty, choosing you is the best decision I've ever made. 
+            You bring peace to my heart and joy to my days.<br><br>
+            The Angels are jealous knowing what I found. 
             I don’t just want today with you, I want every tomorrow.
-            The Angels up in the clouds are jealous, knowing what I found.
-            I take one look at you, and you take me out of the ordinary.
-            You get things way you dae do to me way ar no fit explain.<br>
-            <strong>I love you endlessly 💕</strong>
         </p>
-        <p>Yours always, Dauda</p>
+        <p><strong>I love you endlessly 💕</strong></p>
+        <p style="font-size: 0.9rem;">Yours always, Dauda</p>
+        
+        <div class="feedback-box">
+          <p>Leave a note for me here, beautiful:</p>
+          <form action="https://formspree.io/f/mykdgoor" method="POST">
+            <textarea name="message" placeholder="Write your 'Yes' here..." required></textarea>
+            <input type="hidden" name="_subject" value="Gifty said YES! ❤️">
+            <button class="yes" type="submit" style="margin-top:10px">Send to Dauda ❤️</button>
+          </form>
+        </div>
     `;
 
     startHearts();
 }
 
-/* Floating hearts generator */
 function startHearts() {
     setInterval(() => {
         const heart = document.createElement("div");
         heart.className = "heart";
-        heart.innerHTML = "💖";
+        heart.innerHTML = ["💖", "💗", "💝", "💕"][Math.floor(Math.random() * 4)];
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 6000);
-    }, 400);
+    }, 300);
 }
 
-/* Countdown to Valentine’s Day */
 function updateCountdown() {
     const valentine = new Date(new Date().getFullYear(), 1, 14);
     const now = new Date();
     const diff = valentine - now;
-
     if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById("countdown").innerText =
-            `⏳ ${days} day(s) to Valentine’s Day`;
+        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("countdown").innerText = `⏳ ${days} days until our day!`;
     }
 }
 updateCountdown();
-
-   <div class="feedback-box">
-  <h2>💬 Send me your thoughts, my love</h2>
-
-  <form action="https://formspree.io/f/mykdgoor" method="POST">
-    <textarea
-      name="message"
-      placeholder="Write how this made you feel..."
-      required
-    ></textarea>
-
-    <input type="hidden" name="_subject" value="Valentine Response ❤️">
-
-    <button type="submit">Send ❤️</button>
-    <input type="hidden" name="_redirect" value="thankyou.html">
-
-  </form>
-</div>
-
 </script>
-
 </body>
-
 </html>
-
-
-
